@@ -1,11 +1,20 @@
-<h1>Show list</h1>
+<h1> <%= @list.name %></h1>
+<h4><%= link_to "new bookmark", new_list_bookmark_path(@list) %></h4>
 
-<h3> <%= @list.name %></h3>
-<% @list.bookmarks.each do |b| %>
-<h4><%= b.comment %></h4>
-<h4><%= b.movie.title %></h4>
-<h4><%= link_to "Delete",
-  bookmark_path(b),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
- %></h4>
-<% end %>
+<div class="cards">
+  <% @list.bookmarks.each do |b| %>
+  <div>
+    <h4 class="mt-3" id="title-center"><%= b.movie.title %></h4>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= b.movie.poster_url %>)">
+      <%# <div class="card-details"> %>
+          <h4><%= b.comment %></h4>
+          <h4><%= link_to "Delete",
+          bookmark_path(b),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, id: "no-decoration"
+            %>
+          </h4>
+        <%# </div> %>
+      </div>
+    </div>
+  <% end %>
+</div>
