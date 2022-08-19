@@ -1,5 +1,8 @@
-<h1> <%= @list.name %></h1>
-<h4><%= link_to "new bookmark", new_list_bookmark_path(@list) %></h4>
+
+<div class="d-flex pt-3 justify-content-md-center">
+  <h1> <%= @list.name %></h1>
+  <h4>(<%= link_to "add movie", new_list_bookmark_path(@list), class: "text-decoration-none" %>)</h4>
+</div>
 
 <div class="cards">
   <% @list.bookmarks.each do |b| %>
