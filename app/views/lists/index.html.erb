@@ -1,5 +1,10 @@
 <h1>Index</h1>
+<%= link_to "New List", new_list_path %>
 
-<% @lists.each do |list| %>
-<h3><%= list.name %> <%= link_to "link", list_path(list) %></h3>
-<% end  %>
+<div class="cards">
+  <% @lists.each do |list| %>
+      <div class="list-card-category"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, width: 300, crop: :fill %>')">
+        <h1><%= link_to list.name, list_path(list), id: "no-decoration" %></h1>
+      </div>
+  <% end %>
+</div>
